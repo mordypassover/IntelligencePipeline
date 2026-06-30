@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "IntelligencePipleine": {
+      "commandName": "Project"
+    },
+    "Container (Dockerfile)": {
+      "commandName": "Docker"
+    }
+  }
+}
