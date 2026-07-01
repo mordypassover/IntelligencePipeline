@@ -7,8 +7,8 @@ namespace IntelligencePipeline.Models.Reports
         private int _altitude;
         private int _imageQuality;
 
-        int Altitude { get => _altitude; set { _altitude = value; } } 
-        int ImageQuality { get => _imageQuality; set { _imageQuality = value; } }
+        public int Altitude { get => _altitude; set { _altitude = value; } }
+        public int ImageQuality { get => _imageQuality; set { _imageQuality = value; } }
 
         public DroneReport(int reportId, DateTime timestamp, double latitude, double longitude, string description,
             int altitude, int imageQuality) : base(reportId, timestamp, latitude, longitude, description)
