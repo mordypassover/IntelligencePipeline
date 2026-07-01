@@ -7,12 +7,12 @@ namespace IntelligencePipeline.Validation
     {
         public ValidationResult Validate(Report report)
         {
-            ValidationResult commonFieldsAreValid = ValidateCommonFields(report);
-            if (ValidateCommonFields(report).IsValid) 
+            ValidationResult commonFieldsAreValidation = ValidateCommonFields(report);
+            if (commonFieldsAreValidation.IsValid) 
             {
                 return ValidateSpecificFields(report);
             }
-            return commonFieldsAreValid;
+            return commonFieldsAreValidation;
 
         }
         protected ValidationResult ValidateCommonFields(Report report)

@@ -16,16 +16,17 @@ namespace IntelligencePipeline.Models.Reports
         private int _reliabilityScore;
         private string? _rejectionReason;
 
-        int ReportId { get; } 
-        DateTime Timestamp { get; set; } 
-        double Latitude { get; set; } 
-        double Longitude { get; set; } 
-        string Description { get; set; } 
-        ReportStatus Status { get; set; } 
-        Priority Priority { get; set; }
-        Classification Classification { get; set; }
-        int ReliabilityScore { get; set; }
-        string RejectionReason { get; set; }
+        public int ReportId { get; protected set; }
+        public DateTime Timestamp { get; protected set; }
+        public double Latitude { get; protected set; }
+        public double Longitude { get; protected set; }
+        public string Description { get; protected set; }
+        public ReportStatus Status { get; set; }
+        public Priority Priority { get; set; }
+        public Classification Classification { get; set; }
+        public int ReliabilityScore { get; set; }
+        public string RejectionReason { get; set; }
+
 
         protected Report(int reportId, DateTime timestamp, double latitude,double longitude, string description)
         {
@@ -42,7 +43,8 @@ namespace IntelligencePipeline.Models.Reports
         public virtual string GetSummary()
         {
             return $" ReportId = {ReportId} Timestamp = {Timestamp} Latitude = {Latitude}" +
-                   $" Longitude = {Longitude} Description = {Description} Status = {Status}";
+                   $" Longitude = {Longitude} Description = {Description} Status = {Status}" +
+                   $" Priority{Priority} ";
         } 
         public override string ToString()
         {
