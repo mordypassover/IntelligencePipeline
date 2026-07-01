@@ -9,7 +9,7 @@ namespace IntelligencePipeline
     {
         public static void Main(string[] args)
         {
-
+            
         }
         private static void DisplayReport(Report report) { }
         private static void DisplayValidatedReports(ReportRepository repository) { }

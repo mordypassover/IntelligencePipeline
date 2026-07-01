@@ -1,4 +1,5 @@
 using IntelligencePipeline.Models.Enums;
+using IntelligencePipleine.Models.Enums;
 using System;
 
 namespace IntelligencePipeline.Models.Reports
@@ -10,10 +11,10 @@ namespace IntelligencePipeline.Models.Reports
         private Language _language;
         private int _signalStrength;
 
-        double Frequency { get; set; }
-        string Content { get; set; }
-        Language Language { get; set; }
-        int SignalStrength { get; set; }
+        double Frequency { get => _frequency; set { _frequency = value; } }
+        string Content { get => _content; set { _content = value; } }
+        Language Language { get => _language; set { _language = value; } }
+        int SignalStrength { get => _signalStrength; set { _signalStrength = value; } }
 
         public SignalReport(int reportId, DateTime timestamp, double latitude,
         double longitude, string description, double frequency, string content,
@@ -29,7 +30,18 @@ namespace IntelligencePipeline.Models.Reports
 
         public override int CalculateReliabilityScore()
         {
-            return 0;
+            int BASErELIABILITY = 5;
+            int reliability = BASErELIABILITY;
+            if (SignalStrength <= -100) { reliability -= 2; }
+            if (SignalStrength >= -70) { reliability += 2; }
+            else if (SignalStrength >= -40) { reliability += 3; }
+            foreach (string word in Content.Split())
+                if (Enum.TryParse(word, true, out ContentKeyWords _))
+                {
+                    reliability += 1;
+                    break;
+                }
+            return reliability;
         }
     }
 }

@@ -1,3 +1,4 @@
+using IntelligencePipleine.Models.Enums;
 using System;
 
 namespace IntelligencePipeline.Models.Reports
@@ -9,10 +10,10 @@ namespace IntelligencePipeline.Models.Reports
         private string _unit;
         private int _confidenceLevel;
 
-        string SoldierName { get; set; }
-        string SoldierID { get; set; } 
-        string Unit { get; set; } 
-        int ConfidenceLevel { get; set; }
+        string SoldierName { get => _soldierName; set { _soldierName = value; } }
+        string SoldierID { get => _soldierID; set { _soldierID = value; } } 
+        string Unit { get => _unit; set { _unit = value; } } 
+        int ConfidenceLevel { get => _confidenceLevel; set { _confidenceLevel = value; } }
 
         public SoldierReport(int reportId, DateTime timestamp, double latitude, double longitude,
             string description, string soldierName, string soldierID, string unit, int confidenceLevel) 
@@ -26,7 +27,15 @@ namespace IntelligencePipeline.Models.Reports
         public override string GetSourceType() => "Soldier";
         public override int CalculateReliabilityScore()
         {
-            return 0;
+            int BASErELIABILITY = 4;
+            int reliability = BASErELIABILITY + ConfidenceLevel;
+             foreach (string word in Description.Split())
+                if (Enum.TryParse(word,true, out DiscriptionKeyWords _))
+                { 
+                    reliability += 1; 
+                    break;
+                }
+            return reliability;
         }
     }
 }

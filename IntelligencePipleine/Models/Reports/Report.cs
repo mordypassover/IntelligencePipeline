@@ -11,21 +11,21 @@ namespace IntelligencePipeline.Models.Reports
         private double _longitude;
         private string _description;
         private ReportStatus _status;
-        private Priority _priority;
-        private Classification _classification;
-        private int _reliabilityScore;
+        private Priority? _priority;
+        private Classification? _classification;
+        private int? _reliabilityScore;
         private string? _rejectionReason;
 
-        public int ReportId { get; protected set; }
-        public DateTime Timestamp { get; protected set; }
-        public double Latitude { get; protected set; }
-        public double Longitude { get; protected set; }
-        public string Description { get; protected set; }
-        public ReportStatus Status { get; set; }
-        public Priority Priority { get; set; }
-        public Classification Classification { get; set; }
-        public int ReliabilityScore { get; set; }
-        public string RejectionReason { get; set; }
+        public int ReportId { get => _reportId; protected set { _reportId = value; } }
+        public DateTime Timestamp { get => _timestamp; protected set { _timestamp = value; } }
+        public double Latitude { get => _latitude; protected set { _latitude = value; } }
+        public double Longitude { get => _longitude; protected set { _longitude = value; } }
+        public string Description { get => _description; protected set { _description = value; } }
+        public ReportStatus Status { get => _status; set { _status = value; } }
+        public Priority? Priority { get => _priority; set { _priority = value; } }
+        public Classification? Classification { get => _classification; set { _classification = value; } }
+        public int? ReliabilityScore { get => _reliabilityScore; set { _reliabilityScore = value; } }
+        public string? RejectionReason { get => _rejectionReason; set { _rejectionReason = value; } }
 
 
         protected Report(int reportId, DateTime timestamp, double latitude,double longitude, string description)
@@ -44,7 +44,8 @@ namespace IntelligencePipeline.Models.Reports
         {
             return $" ReportId = {ReportId} Timestamp = {Timestamp} Latitude = {Latitude}" +
                    $" Longitude = {Longitude} Description = {Description} Status = {Status}" +
-                   $" Priority{Priority} ";
+                   $" Priority{Priority} Classification = {Classification} ReliabilityScore ={ReliabilityScore}" +
+                   $" RejectionReason = {RejectionReason}";
         } 
         public override string ToString()
         {
