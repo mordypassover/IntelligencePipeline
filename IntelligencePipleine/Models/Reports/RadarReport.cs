@@ -8,9 +8,9 @@ namespace IntelligencePipeline.Models.Reports
         private int _direction;
         private int _distance;
 
-        int Speed { get => _speed; set { _speed = value; } } 
-        int Direction { get => _direction; set { _direction = value; } }
-        int Distance { get => _distance; set { _distance = value; } }
+        public int Speed { get => _speed; set { _speed = value; } }
+        public int Direction { get => _direction; set { _direction = value; } }
+        public int Distance { get => _distance; set { _distance = value; } }
 
         public RadarReport(int reportId, DateTime timestamp, double latitude,
         double longitude, string description, int speed, int direction, int distance)

@@ -11,10 +11,10 @@ namespace IntelligencePipeline.Models.Reports
         private Language _language;
         private int _signalStrength;
 
-        double Frequency { get => _frequency; set { _frequency = value; } }
-        string Content { get => _content; set { _content = value; } }
-        Language Language { get => _language; set { _language = value; } }
-        int SignalStrength { get => _signalStrength; set { _signalStrength = value; } }
+        public double Frequency { get => _frequency; set { _frequency = value; } }
+        public string Content { get => _content; set { _content = value; } }
+        public Language Language { get => _language; set { _language = value; } }
+        public int SignalStrength { get => _signalStrength; set { _signalStrength = value; } }
 
         public SignalReport(int reportId, DateTime timestamp, double latitude,
         double longitude, string description, double frequency, string content,
