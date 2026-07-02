@@ -20,13 +20,14 @@ namespace IntelligencePipeline.Calculators
         public Priority Calculate(Report report)
         {
             Priority calculatedPriority = Priority.Low;
-
+            //checks if Medium
             if (ContainsKeyword(report.Description, MediumKeywords) ||
                 ((report is RadarReport adar1) && (adar1.Speed >= 150 || 
                 adar1.ReliabilityScore >= 7)))
             {
                 calculatedPriority = Priority.Medium;
             }
+            //checks if High
             if (ContainsKeyword(report.Description, HighKeywords) ||
                 ((report is DroneReport drone1) && drone1.Altitude < 500) ||
                 ((report is RadarReport radar2) && radar2.Speed >= 400) ||
@@ -34,8 +35,7 @@ namespace IntelligencePipeline.Calculators
             {
                 calculatedPriority = Priority.High;
             }
-
-            // 3. Evaluate Critical rules (overwrites High if matched)
+            // checks if critical
             if (ContainsKeyword(report.Description, CriticalKeywords) ||
                 (report is RadarReport radar3 && radar3.Speed >= 800) ||
                 ((report is SignalReport) && ContainsKeyword(report.Description, CriticalSignalKeywords)))
