@@ -9,6 +9,10 @@ namespace IntelligencePipeline.Calculators
     {
         public Priority Calculate(Report report)
         {
+            
+        }
+        private bool ContainsKeyword(string text, params string[] keywords)
+        {
 
         }
     }

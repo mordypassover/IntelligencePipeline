@@ -8,7 +8,7 @@ namespace IntelligencePipeline.Calculators
     {
         public Classification Calculate(Report report)
         {
-
+            
         }
         private bool ContainsKeyword(string text, params string[] keywords)
         {
